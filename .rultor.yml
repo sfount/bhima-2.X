@@ -15,6 +15,9 @@ assets:
   .env.staging: "sfount/sfount-bhima-assets#.env.staging"
 merge: 
   script: |-
+    echo "Setting up ENV..."
+    export $(sed -e '/^#/d' .env.development | xargs)
+    ./sh/install.sh
     echo "Building..."
     ./node_modules/.bin/gulp build
     echo "Testing build..."

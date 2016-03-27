@@ -4,11 +4,7 @@
 
 echo "Building test database for end to end tests ..."
 
-# build the test database
-# TODO Seperate test databases for integration (very few entities) and e2e tests (more featured) should be defined
-DB_USER="bhima"
-DB_PASS="HISCongo2013"
-DB_NAME="bhima_test"
+export $(sed -e '/^#/d' .env.development | xargs)
 
 mysql -u $DB_USER -p$DB_PASS -e "DROP DATABASE bhima_test;"
 mysql -u $DB_USER -p$DB_PASS -e "CREATE DATABASE bhima_test;"
