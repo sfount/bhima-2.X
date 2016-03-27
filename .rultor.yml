@@ -6,9 +6,11 @@ install:
 - cp /home/r/.env.production /home/r/repo/
 - cp /home/r/.env.development /home/r/repo/
 - cp /home/r/.env.staging /home/r/repo/
+- sudo /usr/bin/Xvfb :99 -ac -screen 0 1024x768x24 &
 - sudo service mysql start
 - npm install 
 - bower install
+- node node_modules/gulp-protractor/node_modules/protractor/bin/webdriver-manager update
 assets:
   .env.production: "sfount/sfount-bhima-assets#.env.production"
   .env.development: "sfount/sfount-bhima-assets#.env.development"
