@@ -1,18 +1,19 @@
+docker:
+  image: "sfount/bhima:latest"
 architect:
 - sfount
-docker:
-  image: sfount/bhima
-assets:
-  .env.production: sfount/sfount-bhima-assets#.env.production
-  .env.development: sfount/sfount-bhima-assets#.env.development
-  .env.staging: sfount/sfount-bhima-assets#.env.staging
 install:
 - sudo service mysql start
 - npm install 
 - bower install
-- ./node_modules/.bin/gulp build
+assets:
+  .env.production: sfount/sfount-bhima-assets#.env.production
+  .env.development: sfount/sfount-bhima-assets#.env.development
+  .env.staging: sfount/sfount-bhima-assets#.env.staging
 merge: 
   script: |-
+    echo "Building..."
+    ./node_modules/.bin/gulp build
     echo "Testing build..."
     ./sh/integration-tests.sh
     echo "Complete (more tests to follow)..."
