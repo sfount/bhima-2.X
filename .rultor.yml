@@ -3,6 +3,9 @@ docker:
 architect:
 - sfount
 install:
+- cp /home/r/.env.production /home/r/repo/
+- cp /home/r/.env.development /home/r/repo/
+- cp /home/r/.env.staging /home/r/repo/
 - sudo service mysql start
 - npm install 
 - bower install
