@@ -21,7 +21,7 @@ merge:
     ./node_modules/.bin/gulp build
     echo "Testing build..."
     ./sh/integration-tests.sh
-# Move this to environment variable
+    # Move this to environment variable
     export DISPLAY=:99
     ./sh/test-ends.sh
     echo "Complete (more tests to follow)..."
