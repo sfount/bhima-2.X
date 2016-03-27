@@ -3,13 +3,11 @@ docker:
 architect:
 - sfount
 install:
-# Copy environment files from top level into ./r directory
-- cp ../.env.* .
+- cp ./../.env.* "."
 - sudo service mysql start
 - sudo /usr/bin/Xvfb :99 -ac -screen 0 1024x768x24 &
 - npm install 
 - bower install
-# Do this in a cleaner way 
 - ./node_modules/gulp-protractor/node_modules/protractor/bin/webdriver-manager update
 assets:
   .env.production: "sfount/sfount-bhima-assets#.env.production"
@@ -21,7 +19,6 @@ merge:
     ./node_modules/.bin/gulp build
     echo "Testing build..."
     ./sh/integration-tests.sh
-    # Move this to environment variable
     export DISPLAY=:99
     ./sh/test-ends.sh
     echo "Complete (more tests to follow)..."
