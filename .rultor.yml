@@ -21,8 +21,10 @@ merge:
     ./sh/install.sh
     echo "Building..."
     ./node_modules/.bin/gulp build
-    echo "Testing build..."
+    echo "Running integration tests..."
     ./sh/integration-tests.sh
+    echo "Setting up end to end tests..."
     export DISPLAY=:99
+    export CHROME_USER_DATA_DIR=/root/.config/google-chrome/
     ./sh/test-ends.sh
     echo "Complete (more tests to follow)..."
