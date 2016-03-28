@@ -1,4 +1,5 @@
 docker:
+  as_root: true
   image: "sfount/bhima:latest"
 architect:
 - sfount
@@ -8,7 +9,7 @@ install:
 - cp /home/r/.env.staging /home/r/repo/
 - sudo service mysql start
 - npm install 
-- bower install
+- bower install --allow-root
 assets:
   .env.production: "sfount/sfount-bhima-assets#.env.production"
   .env.development: "sfount/sfount-bhima-assets#.env.development"
