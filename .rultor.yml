@@ -1,5 +1,4 @@
 docker:
-  as_root: true
   image: "sfount/bhima:latest"
 architect:
 - sfount
@@ -7,9 +6,9 @@ install:
 - cp /home/r/.env.production /home/r/repo/
 - cp /home/r/.env.development /home/r/repo/
 - cp /home/r/.env.staging /home/r/repo/
-- sudo service mysql start
+- service mysql start
 - npm install 
-- bower install --allow-root
+- bower install
 assets:
   .env.production: "sfount/sfount-bhima-assets#.env.production"
   .env.development: "sfount/sfount-bhima-assets#.env.development"
@@ -25,7 +24,7 @@ merge:
     echo "Building..."
     echo "Running integration tests..."
     ./sh/integration-tests.sh
-    sleep 60
+    sleep 15
     echo "Setting up end to end tests..."
     ./sh/test-ends.sh
     echo "Complete (more tests to follow)..."
