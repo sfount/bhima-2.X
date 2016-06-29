@@ -4,13 +4,12 @@
 set -uo pipefail
 
 # This assumes you run tests from the top level bhima directory.
-
 echo "Building test database for integration tests ..."
 
-# TODO - store these in environmental variables somehow
-DB_USER='bhima'
-DB_PASS='HISCongo2013'
-DB_NAME='bhima_test'
+
+# npm run dev assumes development environment file is settup, export these 
+# environment variables
+export $(sed -e '/^#/d' .env.development | xargs)
 
 # set build timeout
 TIMEOUT=${BUILD_TIMEOUT:-8}

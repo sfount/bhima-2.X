@@ -7,11 +7,7 @@ set -uo pipefail
 
 echo "Building test database for end to end tests ..."
 
-# build the test database
-# TODO Seperate test databases for integration (very few entities) and e2e tests (more featured) should be defined
-DB_USER="bhima"
-DB_PASS="HISCongo2013"
-DB_NAME="bhima_test"
+export $(sed -e '/^#/d' .env.development | xargs)
 
 # set the build timeout
 TIMEOUT=${BUILD_TIMEOUT:-8}
